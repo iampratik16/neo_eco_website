@@ -28,6 +28,7 @@ import {
   Award,
   BadgeCheck,
   Building,
+  MessageSquareText,
   type LucideIcon,
 } from "lucide-react";
 
@@ -61,6 +62,7 @@ export const icons = {
   Award,
   BadgeCheck,
   Building,
+  MessageSquareText,
 } satisfies Record<string, LucideIcon>;
 
 export type IconName = keyof typeof icons;

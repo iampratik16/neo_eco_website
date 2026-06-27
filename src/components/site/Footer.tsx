@@ -4,6 +4,8 @@ import { footerColumns } from "@/data/nav";
 import { Logo } from "./Logo";
 import { Icon } from "@/components/ui/Icon";
 import { Button } from "@/components/ui/Button";
+import { WhatsAppIcon } from "./WhatsAppIcon";
+import { whatsappUrl } from "@/lib/whatsapp";
 
 export function Footer() {
   const year = 2026;
@@ -38,6 +40,15 @@ export function Footer() {
             <a href={business.phone.href} className="flex items-center gap-3 transition-colors hover:text-white">
               <Icon name="Phone" className="size-4 text-accent-400" />
               {business.phone.display}
+            </a>
+            <a
+              href={whatsappUrl()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 transition-colors hover:text-white"
+            >
+              <WhatsAppIcon className="size-4 text-accent-400" />
+              WhatsApp us
             </a>
             <a href={`mailto:${business.email}`} className="flex items-center gap-3 transition-colors hover:text-white">
               <Icon name="Mail" className="size-4 text-accent-400" />

@@ -7,6 +7,8 @@ import { Section } from "@/components/ui/Section";
 import { Eyebrow } from "@/components/ui/Section";
 import { Icon, type IconName } from "@/components/ui/Icon";
 import { Reveal } from "@/components/ui/Reveal";
+import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
+import { whatsappUrl } from "@/lib/whatsapp";
 import { PageHero } from "@/components/sections/PageHero";
 import { QuoteForm } from "@/components/sections/QuoteForm";
 
@@ -73,6 +75,23 @@ export default function ContactPage() {
                 </Reveal>
               ))}
             </div>
+
+            {/* WhatsApp quick contact */}
+            <a
+              href={whatsappUrl()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 flex items-center gap-4 rounded-2xl bg-[#25D366] p-5 text-white shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg"
+            >
+              <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-white/20">
+                <WhatsAppIcon className="size-6" />
+              </span>
+              <span>
+                <span className="block text-xs font-semibold uppercase tracking-wide text-white/80">Chat to us</span>
+                <span className="mt-1 block font-semibold">Message us on WhatsApp</span>
+              </span>
+              <Icon name="ArrowUpRight" className="ml-auto size-5" />
+            </a>
 
             {/* Map (keyless OpenStreetMap embed). TODO: swap for Google Maps embed if an API key is provided. */}
             <div className="mt-8 overflow-hidden rounded-2xl border border-line">

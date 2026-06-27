@@ -7,6 +7,7 @@ import { JsonLd } from "@/components/site/JsonLd";
 import { organizationSchema } from "@/lib/schema";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
+import { FloatingActions } from "@/components/site/FloatingActions";
 
 // Sora uses display:optional so the heading font never causes a late LCP repaint under slow
 // networks (size-adjusted fallback keeps CLS at 0; Sora caches for the rest of the session).
@@ -45,6 +46,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Header />
         <main id="main">{children}</main>
         <Footer />
+        <FloatingActions />
       </body>
     </html>
   );

@@ -22,6 +22,12 @@ export const business = {
     href: "tel:+447768066860",
   },
 
+  // WhatsApp click-to-chat (same line as the phone). wa.me wants digits only, no "+" or leading 0.
+  whatsapp: {
+    number: "447768066860",
+    defaultMessage: "Hello Neo Eco Cleaning, I would like a quote for cleaning my block.",
+  },
+
   // Service-area business: no public street address. Modelled via areaServed in schema.
   address: {
     locality: "London",
