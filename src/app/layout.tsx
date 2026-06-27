@@ -25,7 +25,6 @@ export const metadata: Metadata = {
   creator: business.name,
   alternates: { canonical: "/" },
   openGraph: { type: "website", locale: "en_GB", siteName: business.name, url: SITE_URL },
-  icons: { icon: "/favicon.ico" },
 };
 
 // Set the .js class before paint so reveal animations never hide content for no-JS clients.
