@@ -12,8 +12,7 @@ import { JsonLd } from "@/components/site/JsonLd";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
-import { Icon, type IconName } from "@/components/ui/Icon";
-import { Reveal } from "@/components/ui/Reveal";
+import { Icon } from "@/components/ui/Icon";
 import { HomeHero } from "@/components/sections/HomeHero";
 import { TrustStrip } from "@/components/sections/TrustStrip";
 import { FeatureCards } from "@/components/sections/FeatureCards";
@@ -39,8 +38,6 @@ export const metadata: Metadata = {
   title: { absolute: "Neo Eco Cleaning | Block Cleaning Specialists, North London" },
 };
 
-const uspIcons: IconName[] = ["Building2", "Award", "ShieldCheck", "Leaf", "Clock", "BadgeCheck"];
-
 export default function HomePage() {
   const featuredProjects = projects.filter((p) => p.caseStudy).slice(0, 3);
   const latestPosts = posts.slice(0, 3);
@@ -51,153 +48,122 @@ export default function HomePage() {
       <HomeHero />
       <TrustStrip />
 
-      {/* Why choose us */}
-      <Section tone="cream">
+      <Section>
         <SectionHeading
-          eyebrow="Why Neo Eco"
-          title="The communal cleaning partner managing agents rely on"
-          intro="We are block cleaning specialists first. That focus, plus genuine eco credentials and a Quality Guarantee, is why agents and freeholders trust us with their buildings."
+          align="left"
+          eyebrow="Why agents choose us"
+          title="We only do communal cleaning — and we do it properly"
+          intro="Most of our work is block cleaning for managing agents. That focus means we know what leaseholders notice, what surveyors flag, and what your service charge needs to show for itself."
+          className="max-w-2xl"
         />
-        <div className="mt-14">
-          <FeatureCards
-            items={business.usps.map((u, i) => ({ icon: uspIcons[i], title: u.title, body: u.body }))}
-          />
+        <div className="mt-12">
+          <FeatureCards items={business.usps.map((u) => ({ title: u.title, body: u.body }))} />
         </div>
       </Section>
 
-      {/* Stats */}
       <Section tone="ink">
-        <Reveal>
-          <Stats stats={business.stats as unknown as { value: number; suffix?: string; decimals?: number; label: string }[]} />
-        </Reveal>
+        <Stats stats={[...business.stats]} />
       </Section>
 
-      {/* Services */}
-      <Section>
+      <Section tone="cream">
         <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
           <SectionHeading
             align="left"
-            eyebrow="What we do"
-            title="Cleaning services for residential blocks"
-            intro="One accountable team for the whole building, from routine communal cleaning to deep restoration."
+            eyebrow="Services"
+            title="What we clean"
+            intro="One team for the whole building — routine visits and deep restoration when communal areas have been left too long."
             className="max-w-xl"
           />
           <Button href="/services" variant="outline" className="shrink-0">
             All services
-            <Icon name="ArrowRight" className="size-4" />
           </Button>
         </div>
-        <div className="mt-12">
+        <div className="mt-10">
           <ServicesGrid services={services} />
         </div>
       </Section>
 
-      {/* Flagship feature blocks */}
-      <Section tone="cream" className="space-y-20 lg:space-y-28">
+      <Section className="space-y-20 lg:space-y-24">
         <FeatureBlock
           image="service-block-cleaning"
-          imageAlt="Spotless communal corridor and lobby in a residential block of flats"
-          eyebrow="Our flagship service"
-          title="Block cleaning that keeps your building looking cared for"
+          imageAlt="Communal corridor and lobby in a residential block of flats"
+          eyebrow="Block cleaning"
+          title="Weekly communal cleaning on a schedule you can plan around"
           body={[
             flagshipService.answer,
-            "We look after entrances, lobbies, hallways, stairwells, lifts, bin stores and external communal areas on a planned schedule, with before and after records so you can show leaseholders exactly where their service charge is going.",
+            "Entrances, lobbies, hallways, stairwells, lifts, bin stores and external communal areas — with before and after records if you need to show leaseholders where the service charge goes.",
           ]}
-          bullets={["Reliable scheduled visits", "One contractor, every surface", "Before and after records", "Eco-friendly throughout"]}
+          bullets={["Scheduled visits", "One contractor for every surface", "Before and after records", "Eco products throughout"]}
         >
-          <Button href="/services/block-cleaning">
-            Explore block cleaning
-            <Icon name="ArrowRight" className="size-4" />
-          </Button>
+          <Button href="/services/block-cleaning">Block cleaning details</Button>
         </FeatureBlock>
 
         <FeatureBlock
           reverse
           image="service-jet-washing"
           imageAlt="High pressure jet washing of communal block paving"
-          eyebrow="Deep restoration"
-          title="Jet washing that recovers neglected communal areas"
+          eyebrow="Jet washing"
+          title="Courtyards and paving that have been neglected for years"
           body={[
-            "When communal paving is left for years, moss, weeds and silt work into the joints and drains. Our jet washing recovers the surface and our planned visits stop it happening again.",
-            "At Ashleigh Court in Watford we cleared almost 60 sacks of mud and deep-rooted growth over four days to restore a courtyard that had not been jet washed in five years.",
+            "Moss, weeds and silt work into joints and drains when communal paving is left too long. We recover the surface and can set up planned visits so it does not happen again.",
+            "At Ashleigh Court in Watford we cleared almost 60 sacks of mud and deep-rooted growth over four days — a courtyard that had not been jet washed in five years.",
           ]}
-          bullets={["Moss and weed removal", "Drain clearing", "Re-sanding to protect joints", "Eco-friendly power"]}
+          bullets={["Moss and weed removal", "Drain clearing", "Re-sanding to protect joints", "Low-chemical methods"]}
         >
-          <Button href="/services/jet-washing">
-            Explore jet washing
-            <Icon name="ArrowRight" className="size-4" />
-          </Button>
+          <Button href="/services/jet-washing">Jet washing details</Button>
         </FeatureBlock>
       </Section>
 
-      {/* Areas */}
-      <Section>
+      <Section tone="cream">
         <SectionHeading
-          eyebrow="Where we work"
-          title="Covering North London, Central London and beyond"
-          intro="North London is our heartland, with priority boroughs of Barnet, Enfield, Camden, Islington and Haringey, plus Central and West London, Watford and Hertfordshire."
+          align="left"
+          eyebrow="Coverage"
+          title="North London is our base — we cover much of the capital"
+          intro="Priority boroughs include Barnet, Enfield, Camden, Islington and Haringey. We also work across Central and West London, Watford and Hertfordshire."
+          className="max-w-2xl"
         />
-        <div className="mt-12">
+        <div className="mt-10">
           <AreaList items={[...regions, ...priorityBoroughs]} />
         </div>
       </Section>
 
-      {/* Our work */}
-      <Section tone="cream">
+      <Section>
         <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
           <SectionHeading
             align="left"
-            eyebrow="Our work"
-            title="Real projects, real results"
-            intro="A selection of communal cleaning and jet washing projects for managing agents."
+            eyebrow="Recent work"
+            title="Projects we have completed"
+            intro="A few communal cleaning and jet washing jobs for managing agents — with photos and write-ups where we have them."
             className="max-w-xl"
           />
           <Button href="/our-work" variant="outline" className="shrink-0">
-            See our work
-            <Icon name="ArrowRight" className="size-4" />
+            All projects
           </Button>
         </div>
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="mt-10 grid gap-5 md:grid-cols-3">
           {featuredProjects.map((p) => (
-            <Reveal key={p.slug}>
-              <ProjectCard project={p} />
-            </Reveal>
+            <ProjectCard key={p.slug} project={p} />
           ))}
         </div>
       </Section>
 
-      {/* Testimonials */}
-      <Section>
-        <SectionHeading eyebrow="In their words" title="What our clients say" />
-        <div className="mt-12">
+      <Section tone="cream">
+        <SectionHeading align="left" eyebrow="Feedback" title="What building managers have said" className="max-w-xl" />
+        <div className="mt-10">
           <Testimonials />
         </div>
       </Section>
 
-      {/* Quote section */}
-      <Section tone="eco" id="quote">
+      <Section id="quote">
         <div className="grid items-start gap-12 lg:grid-cols-2">
-          <Reveal>
+          <div>
             <SectionHeading
               align="left"
-              eyebrow="Get started"
-              title="Get a free site survey"
-              intro="Tell us about your block and we will visit, agree a clear scope and send a fixed quote. No obligation."
+              eyebrow="Get in touch"
+              title="Book a site survey"
+              intro="Tell us about your block. We will walk the communal areas with you and send a fixed quote."
             />
-            <ul className="mt-8 space-y-4">
-              {[
-                "Free, no-obligation site survey and fixed quote",
-                "Reliable scheduled cleaning with a consistent standard",
-                "Eco-friendly products, safe for residents and pets",
-                "Quality Guarantee: any complaint resolved at no extra cost",
-              ].map((b) => (
-                <li key={b} className="flex items-start gap-3 text-body">
-                  <Icon name="CheckCircle2" className="mt-0.5 size-5 shrink-0 text-brand-600" />
-                  {b}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="mt-8 flex flex-wrap gap-4 text-sm">
               <a href={business.phone.href} className="inline-flex items-center gap-2 font-semibold text-brand-800">
                 <Icon name="Phone" className="size-5" />
                 {business.phone.display}
@@ -207,56 +173,48 @@ export default function HomePage() {
                 {business.email}
               </a>
             </div>
-          </Reveal>
-          <Reveal delay={120}>
-            <div className="rounded-3xl border border-line bg-surface p-6 shadow-xl shadow-brand-900/5 sm:p-8">
-              <QuoteForm />
-            </div>
-          </Reveal>
+          </div>
+          <div className="border border-line bg-white p-6 sm:p-8">
+            <QuoteForm />
+          </div>
         </div>
       </Section>
 
-      {/* Blog */}
       <Section tone="cream">
         <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
           <SectionHeading
             align="left"
-            eyebrow="Insights"
-            title="From our case studies"
-            intro="Lessons from real communal cleaning and jet washing projects."
+            eyebrow="Case studies"
+            title="Notes from the field"
+            intro="What we learned on specific jobs — useful if you are dealing with something similar."
             className="max-w-xl"
           />
           <Button href="/blog" variant="outline" className="shrink-0">
             All articles
-            <Icon name="ArrowRight" className="size-4" />
           </Button>
         </div>
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="mt-10 grid gap-5 md:grid-cols-3">
           {latestPosts.map((p) => (
-            <Reveal key={p.slug}>
-              <BlogCard post={p} />
-            </Reveal>
+            <BlogCard key={p.slug} post={p} />
           ))}
         </div>
       </Section>
 
-      {/* FAQ */}
       <Section>
-        <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+        <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
           <SectionHeading
             align="left"
-            eyebrow="Questions"
-            title="Frequently asked questions"
-            intro="A few of the things managing agents and freeholders ask us most."
+            eyebrow="FAQ"
+            title="Common questions"
+            intro="What managing agents and freeholders usually ask before they book us."
           />
           <div>
             <FAQAccordion faqs={generalFaqs.slice(0, 6)} />
             <p className="mt-6 text-sm text-muted">
               More questions?{" "}
               <Link href="/faq" className="font-semibold text-brand-800 hover:underline">
-                Read the full FAQ
+                Full FAQ
               </Link>
-              .
             </p>
           </div>
         </div>

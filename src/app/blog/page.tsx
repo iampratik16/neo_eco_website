@@ -26,17 +26,15 @@ export default function BlogIndexPage() {
       <JsonLd data={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Blog", path: "/blog" }])} />
 
       <PageHero
-        eyebrow="Case studies & insights"
-        eyebrowIcon="Sparkles"
-        title="Lessons from real communal cleaning projects"
-        intro="Practical case studies from the blocks we look after, with what they teach managing agents about keeping a building clean, safe and well presented."
+        eyebrow="Case studies"
+        title="Notes from specific jobs"
+        intro="What we learned on communal cleaning and jet washing projects — useful if you are dealing with something similar."
         image="case-jet-courtyard"
         imageAlt="Restored communal courtyard after jet washing"
         breadcrumbs={[{ name: "Blog", path: "/blog" }]}
       >
         <Button href="/contact" variant="accent" size="lg">
-          Get a free quote
-          <Icon name="ArrowRight" className="size-4" />
+          Book a site survey
         </Button>
       </PageHero>
 

@@ -34,9 +34,8 @@ export default function ContactPage() {
 
       <PageHero
         eyebrow="Get in touch"
-        eyebrowIcon="Phone"
-        title="Get a free site survey and quote"
-        intro="Tell us about your block and we will visit, agree a clear scope and send a fixed quote. No obligation, no pressure."
+        title="Book a site survey"
+        intro="Tell us about your block. We will walk the communal areas with you and send a fixed quote."
         image="hero-lobby"
         imageAlt="Clean communal lobby of a residential block"
         breadcrumbs={[{ name: "Contact", path: "/contact" }]}
@@ -60,14 +59,14 @@ export default function ContactPage() {
                 <Reveal key={m.label}>
                   <a
                     href={m.href}
-                    className="flex h-full items-start gap-4 rounded-2xl border border-line bg-surface p-5 transition-all hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-md hover:shadow-brand-900/5"
+                    className="group flex h-full items-start gap-4 py-2 transition-colors"
                   >
                     <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-700">
                       <Icon name={m.icon} className="size-6" />
                     </span>
-                    <span>
-                      <span className="block text-xs font-semibold uppercase tracking-wide text-muted">{m.label}</span>
-                      <span className="mt-1 block font-medium text-ink">{m.value}</span>
+                    <span className="min-w-0">
+                      <span className="block text-sm text-muted">{m.label}</span>
+                      <span className="mt-1 block whitespace-nowrap font-medium text-ink group-hover:text-brand-700">{m.value}</span>
                     </span>
                   </a>
                 </Reveal>

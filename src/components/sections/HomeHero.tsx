@@ -8,69 +8,41 @@ import { HeroVideo } from "./HeroVideo";
 export function HomeHero() {
   return (
     <section className="relative isolate overflow-hidden bg-ink text-white">
-      {/* LCP poster image */}
       <Image
         src="/media/images/hero-lobby-poster.jpg"
-        alt="Pristine, freshly cleaned communal lobby of a modern London residential block"
+        alt="Communal lobby of a London residential block after cleaning"
         fill
         priority
         quality={70}
         sizes="100vw"
         className="object-cover"
       />
-      {/* Motion enhancement */}
       <HeroVideo id="hero-lobby" className="absolute inset-0 -z-[1] size-full object-cover" />
-      {/* Scrims for legibility */}
-      <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/70 to-ink/30" />
-      <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-ink/20" />
+      <div className="absolute inset-0 bg-ink/75" />
 
       <Container className="relative">
-        <div className="flex min-h-[88vh] max-w-2xl flex-col justify-center py-24">
-          <span className="inline-flex w-fit items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm font-medium backdrop-blur-sm">
-            <Icon name="Leaf" className="size-4 text-accent-400" />
-            Block cleaning specialists, North London
-          </span>
+        <div className="flex min-h-[75vh] items-end py-16 lg:items-center lg:py-24">
+          <div className="max-w-2xl">
+            <p className="text-sm font-medium text-white/70">Block cleaning · North London · Since {business.founded}</p>
 
-          <h1 className="mt-6 font-display text-4xl font-semibold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl">
-            Communal areas that make your block <span className="text-accent-400">shine</span>.
-          </h1>
+            <h1 className="mt-4 font-display text-4xl font-semibold leading-[1.1] text-white sm:text-5xl lg:text-[3.25rem]">
+              Communal cleaning for blocks that need to look cared for, every week.
+            </h1>
 
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/80">
-            Neo Eco Cleaning keeps the communal areas of residential blocks clean, safe and presentable for managing
-            agents and freeholders across North London, Central London and the surrounding boroughs. Reliable,
-            eco-friendly and available 24/7.
-          </p>
-
-          <div className="mt-9 flex flex-wrap items-center gap-3">
-            <Button href="/contact" variant="accent" size="lg">
-              Get a free quote
-              <Icon name="ArrowRight" className="size-4" />
-            </Button>
-            <Button href={business.phone.href} variant="white" size="lg">
-              <Icon name="Phone" className="size-4" />
-              {business.phone.display}
-            </Button>
-          </div>
-
-          {/* Trust row */}
-          <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-4 text-sm">
-            <div className="flex items-center gap-2">
-              <div className="flex" aria-hidden="true">
-                {[0, 1, 2, 3, 4].map((i) => (
-                  <Icon key={i} name="Star" className="size-4 fill-accent-400 text-accent-400" />
-                ))}
-              </div>
-              <span className="text-white/80">
-                <span className="font-semibold text-white">5.0</span> Google rating
-              </span>
-            </div>
-            <div className="h-5 w-px bg-white/20" aria-hidden="true" />
-            <p className="text-white/80">Trusted by Rendall &amp; Rittner and MVN Block</p>
-            <div className="h-5 w-px bg-white/20" aria-hidden="true" />
-            <p className="flex items-center gap-2 text-white/80">
-              <Icon name="ShieldCheck" className="size-4 text-accent-400" />
-              Quality Guarantee
+            <p className="mt-5 text-lg leading-relaxed text-white/85">
+              We work with managing agents and freeholders across North London, Central London and the surrounding
+              boroughs. Lobbies, stairwells, lifts, bin stores — one team, on a schedule you can rely on.
             </p>
+
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <Button href="/contact" variant="accent" size="lg">
+                Book a site survey
+              </Button>
+              <Button href={business.phone.href} variant="white" size="lg">
+                <Icon name="Phone" className="size-4" />
+                {business.phone.display}
+              </Button>
+            </div>
           </div>
         </div>
       </Container>

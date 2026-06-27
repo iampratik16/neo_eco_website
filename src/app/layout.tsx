@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Sora, Inter } from "next/font/google";
+import { Lora, Work_Sans } from "next/font/google";
 import "./globals.css";
 import { business } from "@/data/business";
 import { SITE_URL } from "@/lib/seo";
@@ -8,10 +8,17 @@ import { organizationSchema } from "@/lib/schema";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 
-// Sora uses display:optional so the heading font never causes a late LCP repaint under slow
-// networks (size-adjusted fallback keeps CLS at 0; Sora caches for the rest of the session).
-const sora = Sora({ subsets: ["latin"], variable: "--font-sora", display: "optional", weight: ["500", "600", "700"] });
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
+const lora = Lora({
+  subsets: ["latin"],
+  variable: "--font-lora",
+  display: "swap",
+  weight: ["500", "600", "700"],
+});
+const workSans = Work_Sans({
+  subsets: ["latin"],
+  variable: "--font-work-sans",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -25,17 +32,12 @@ export const metadata: Metadata = {
   creator: business.name,
   alternates: { canonical: "/" },
   openGraph: { type: "website", locale: "en_GB", siteName: business.name, url: SITE_URL },
-  icons: { icon: "/favicon.ico" },
 };
-
-// Set the .js class before paint so reveal animations never hide content for no-JS clients.
-const JS_FLAG = `document.documentElement.classList.add('js')`;
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en-GB" className={`${sora.variable} ${inter.variable}`}>
+    <html lang="en-GB" className={`${lora.variable} ${workSans.variable}`}>
       <body className="min-h-dvh bg-background text-body antialiased">
-        <script dangerouslySetInnerHTML={{ __html: JS_FLAG }} />
         <JsonLd data={organizationSchema()} />
         <a
           href="#main"

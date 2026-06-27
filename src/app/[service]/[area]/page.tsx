@@ -11,7 +11,7 @@ import { serviceSchema, breadcrumbSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/site/JsonLd";
 import { Section, Eyebrow } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
-import { Icon, type IconName } from "@/components/ui/Icon";
+import { Icon } from "@/components/ui/Icon";
 import { Reveal } from "@/components/ui/Reveal";
 import { PageHero } from "@/components/sections/PageHero";
 import { FAQAccordion } from "@/components/sections/FAQAccordion";
@@ -35,11 +35,11 @@ export async function generateMetadata({ params }: { params: Promise<{ service: 
   });
 }
 
-const quickFacts: { icon: IconName; label: string }[] = [
-  { icon: "ShieldCheck", label: "Quality Guarantee" },
-  { icon: "Leaf", label: "Eco-friendly products" },
-  { icon: "Clock", label: "Available 24/7" },
-  { icon: "Star", label: "Rated 5.0 by clients" },
+const quickFacts = [
+  "Quality Guarantee — complaints resolved at no extra cost",
+  "Eco-friendly products throughout",
+  "Available 24 hours, 7 days a week",
+  "Block cleaning specialists since 2018",
 ];
 
 export default async function ServiceAreaPage({ params }: { params: Promise<{ service: string; area: string }> }) {
@@ -67,8 +67,7 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ se
       />
 
       <PageHero
-        eyebrow={`${s.name} | ${a.name}`}
-        eyebrowIcon={s.icon as IconName}
+        eyebrow={`${s.name} · ${a.name}`}
         title={sa.h1}
         intro={sa.answer}
         image={s.image}
@@ -76,8 +75,7 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ se
         breadcrumbs={crumbs}
       >
         <Button href="/contact" variant="accent" size="lg">
-          Get a free quote
-          <Icon name="ArrowRight" className="size-4" />
+          Book a site survey
         </Button>
         <Button href={business.phone.href} variant="white" size="lg">
           <Icon name="Phone" className="size-4" />
@@ -100,11 +98,8 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ se
 
             {sa.proof && (
               <Reveal>
-                <div className="mt-8 rounded-2xl border border-brand-200 bg-brand-50 p-6">
-                  <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-brand-700">
-                    <Icon name="BadgeCheck" className="size-5" />
-                    Proven locally
-                  </div>
+                <div className="mt-8 border border-line bg-cream p-6">
+                  <p className="text-sm font-medium text-brand-800">Local work</p>
                   <p className="mt-2 text-ink">{sa.proof}</p>
                 </div>
               </Reveal>
@@ -124,21 +119,18 @@ export default async function ServiceAreaPage({ params }: { params: Promise<{ se
 
           {/* Sidebar */}
           <aside className="space-y-6 lg:sticky lg:top-28 lg:self-start">
-            <div className="rounded-3xl border border-line bg-cream p-6">
+            <div className="border border-line bg-cream p-6">
               <h2 className="font-display text-lg font-semibold text-ink">Why Neo Eco</h2>
-              <ul className="mt-4 space-y-3">
+              <ul className="mt-4 space-y-2 text-sm text-body">
                 {quickFacts.map((f) => (
-                  <li key={f.label} className="flex items-center gap-3 text-sm text-body">
-                    <span className="grid size-9 place-items-center rounded-lg bg-white text-brand-700">
-                      <Icon name={f.icon} className="size-5" />
-                    </span>
-                    {f.label}
+                  <li key={f} className="flex gap-2">
+                    <span className="text-brand-600">—</span>
+                    {f}
                   </li>
                 ))}
               </ul>
               <Button href="/contact" className="mt-6 w-full">
-                Get a free quote
-                <Icon name="ArrowRight" className="size-4" />
+                Contact us
               </Button>
             </div>
 

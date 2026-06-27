@@ -5,20 +5,20 @@ type Variant = "primary" | "accent" | "outline" | "white" | "ghost";
 type Size = "sm" | "md" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-60 disabled:pointer-events-none";
+  "inline-flex items-center justify-center gap-2 rounded-md font-semibold transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-60 disabled:pointer-events-none";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-brand-800 text-white hover:bg-brand-900 shadow-sm hover:shadow-md hover:-translate-y-0.5",
-  accent: "bg-accent-500 text-brand-950 hover:bg-accent-400 shadow-sm hover:shadow-md hover:-translate-y-0.5",
-  outline: "border border-brand-200 text-brand-800 hover:border-brand-400 hover:bg-brand-50",
-  white: "bg-white text-brand-900 hover:bg-cream shadow-sm hover:shadow-md hover:-translate-y-0.5",
-  ghost: "text-brand-800 hover:bg-brand-50",
+  primary: "bg-brand-800 text-white hover:bg-brand-900",
+  accent: "bg-brand-600 text-white hover:bg-brand-700",
+  outline: "border border-line text-brand-800 hover:border-brand-400 hover:bg-cream",
+  white: "bg-white text-brand-900 hover:bg-cream border border-white/20",
+  ghost: "text-brand-800 hover:bg-cream",
 };
 
 const sizes: Record<Size, string> = {
   sm: "px-4 py-2 text-sm",
   md: "px-5 py-2.5 text-sm sm:text-base",
-  lg: "px-7 py-3.5 text-base",
+  lg: "px-6 py-3 text-base",
 };
 
 type CommonProps = { variant?: Variant; size?: Size; className?: string; children: React.ReactNode };
@@ -48,7 +48,6 @@ export function Button({
   );
 }
 
-/** Button-styled element for real <button> use (e.g. form submit). */
 export function ButtonEl({
   variant = "primary",
   size = "md",

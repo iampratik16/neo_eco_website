@@ -31,16 +31,14 @@ export default function OurWorkPage() {
 
       <PageHero
         eyebrow="Our work"
-        eyebrowIcon="Sparkles"
-        title="Real projects, real results"
-        intro="A selection of the communal cleaning and jet washing projects we have delivered for managing agents and major residential developments."
+        title="Projects we have completed"
+        intro="Communal cleaning and jet washing jobs for managing agents — with photos and write-ups where we have them."
         image="case-jet-courtyard"
         imageAlt="Restored communal courtyard after jet washing"
         breadcrumbs={[{ name: "Our Work", path: "/our-work" }]}
       >
         <Button href="/contact" variant="accent" size="lg">
-          Get a free quote
-          <Icon name="ArrowRight" className="size-4" />
+          Discuss a project
         </Button>
       </PageHero>
 

@@ -6,7 +6,6 @@ import { JsonLd } from "@/components/site/JsonLd";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
-import { Icon } from "@/components/ui/Icon";
 import { PageHero } from "@/components/sections/PageHero";
 import { AreaList } from "@/components/sections/AreaList";
 import { ServicesGrid } from "@/components/sections/ServiceCard";
@@ -27,7 +26,6 @@ export default function AreasPage() {
       <JsonLd data={breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Areas", path: "/areas" }])} />
       <PageHero
         eyebrow="Where we work"
-        eyebrowIcon="MapPin"
         title="Areas we cover"
         intro="North London is our heartland, with priority boroughs across the region, plus Central and West London, Watford and the wider Hertfordshire area."
         image="area-north-london"
@@ -35,8 +33,7 @@ export default function AreasPage() {
         breadcrumbs={[{ name: "Areas", path: "/areas" }]}
       >
         <Button href="/contact" variant="accent" size="lg">
-          Get a free quote
-          <Icon name="ArrowRight" className="size-4" />
+          Book a site survey
         </Button>
       </PageHero>
 
@@ -58,7 +55,7 @@ export default function AreasPage() {
           align="left"
           eyebrow="Priority boroughs"
           title="North London boroughs we know best"
-          intro="Google's AI already associates Neo Eco with these boroughs. We cover them with the same standard across all of them."
+          intro="These are the North London boroughs we know best — Barnet, Enfield, Camden, Islington and Haringey — though we cover much of the capital."
           className="max-w-2xl"
         />
         <div className="mt-12">

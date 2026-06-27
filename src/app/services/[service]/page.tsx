@@ -8,7 +8,7 @@ import { serviceSchema, breadcrumbSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/site/JsonLd";
 import { Section, Eyebrow } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
-import { Icon, type IconName } from "@/components/ui/Icon";
+import { Icon } from "@/components/ui/Icon";
 import { Reveal } from "@/components/ui/Reveal";
 import { MediaImage } from "@/components/ui/MediaImage";
 import { PageHero } from "@/components/sections/PageHero";
@@ -29,7 +29,6 @@ export async function generateMetadata({ params }: { params: Promise<{ service: 
   return pageMetadata({ title: s.metaTitle, description: s.metaDescription, path: `/services/${s.slug}`, image: s.image });
 }
 
-const benefitIcons: IconName[] = ["CheckCircle2", "ShieldCheck", "Sparkles", "Leaf"];
 
 export default async function ServiceDetailPage({ params }: { params: Promise<{ service: string }> }) {
   const { service } = await params;
@@ -53,8 +52,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
       />
 
       <PageHero
-        eyebrow={s.flagship ? "Flagship service" : "Our services"}
-        eyebrowIcon={s.icon as IconName}
+        eyebrow={s.flagship ? "Main service" : "Services"}
         title={s.h1}
         intro={s.tagline}
         image={s.image}
@@ -62,8 +60,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
         breadcrumbs={crumbs}
       >
         <Button href="/contact" variant="accent" size="lg">
-          Get a free quote
-          <Icon name="ArrowRight" className="size-4" />
+          Book a site survey
         </Button>
       </PageHero>
 
@@ -96,8 +93,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
         <SectionLite eyebrow="Why it matters" title={`The benefits of ${s.name.toLowerCase()}`} />
         <div className="mt-12">
           <FeatureCards
-            columns={4}
-            items={s.benefits.map((b, i) => ({ icon: benefitIcons[i % benefitIcons.length], title: b.title, body: b.body }))}
+            items={s.benefits.map((b) => ({ title: b.title, body: b.body }))}
           />
         </div>
       </Section>
@@ -179,7 +175,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
         </Section>
       )}
 
-      <CTABanner title={`Get a free quote for ${s.name.toLowerCase()}`} />
+      <CTABanner title={`Discuss ${s.name.toLowerCase()} for your block`} />
     </>
   );
 }

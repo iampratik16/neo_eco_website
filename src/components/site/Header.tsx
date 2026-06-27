@@ -35,45 +35,32 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50">
-      {/* Utility bar */}
-      <div className="hidden bg-ink text-white/80 lg:block">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-8 py-2 text-sm">
+      <div className="hidden border-b border-line bg-cream lg:block">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-8 py-2 text-sm text-muted">
           <div className="flex items-center gap-6">
-            <a href={business.phone.href} className="inline-flex items-center gap-2 transition-colors hover:text-white">
-              <Icon name="Phone" className="size-3.5 text-accent-400" />
+            <a href={business.phone.href} className="inline-flex items-center gap-2 transition-colors hover:text-ink">
+              <Icon name="Phone" className="size-3.5" />
               {business.phone.display}
             </a>
-            <a href={`mailto:${business.email}`} className="inline-flex items-center gap-2 transition-colors hover:text-white">
-              <Icon name="Mail" className="size-3.5 text-accent-400" />
+            <a href={`mailto:${business.email}`} className="inline-flex items-center gap-2 transition-colors hover:text-ink">
+              <Icon name="Mail" className="size-3.5" />
               {business.email}
             </a>
           </div>
-          <div className="flex items-center gap-6">
-            <span className="inline-flex items-center gap-2">
-              <Icon name="Clock" className="size-3.5 text-accent-400" />
-              Available 24/7
-            </span>
-            <span className="inline-flex items-center gap-1.5">
-              <Icon name="Star" className="size-3.5 fill-accent-400 text-accent-400" />
-              <span className="font-medium text-white">5.0</span> rated
-            </span>
-          </div>
+          <p>Available 24 hours, 7 days a week</p>
         </div>
       </div>
 
-      {/* Main bar */}
       <div
         className={cn(
-          "border-b transition-all duration-300",
-          scrolled
-            ? "border-line bg-white/90 backdrop-blur-md supports-[backdrop-filter]:bg-white/80"
-            : "border-transparent bg-white"
+          "border-b transition-colors duration-200",
+          scrolled ? "border-line bg-white/95 backdrop-blur-sm" : "border-transparent bg-white"
         )}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3.5 sm:px-8">
           <Logo />
 
-          <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
+          <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Primary">
             {primaryNav.map((item) => {
               const items = dropdowns[item.href];
               const active = pathname === item.href || pathname.startsWith(item.href + "/");
@@ -83,8 +70,8 @@ export function Header() {
                     key={item.href}
                     href={item.href}
                     className={cn(
-                      "rounded-full px-4 py-2 text-sm font-medium transition-colors",
-                      active ? "text-brand-800" : "text-ink/80 hover:text-brand-800"
+                      "px-3.5 py-2 text-sm font-medium transition-colors",
+                      active ? "text-brand-800 underline decoration-brand-400 decoration-2 underline-offset-4" : "text-ink/80 hover:text-brand-800"
                     )}
                   >
                     {item.label}
@@ -96,20 +83,20 @@ export function Header() {
                   <Link
                     href={item.href}
                     className={cn(
-                      "inline-flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium transition-colors",
-                      active ? "text-brand-800" : "text-ink/80 hover:text-brand-800"
+                      "inline-flex items-center gap-1 px-3.5 py-2 text-sm font-medium transition-colors",
+                      active ? "text-brand-800 underline decoration-brand-400 decoration-2 underline-offset-4" : "text-ink/80 hover:text-brand-800"
                     )}
                   >
                     {item.label}
-                    <Icon name="ChevronDown" className="size-4 transition-transform group-hover:rotate-180" />
+                    <Icon name="ChevronDown" className="size-3.5" />
                   </Link>
-                  <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                    <div className="grid w-64 gap-0.5 rounded-2xl border border-line bg-white p-2 shadow-xl shadow-ink/5">
+                  <div className="invisible absolute left-0 top-full z-50 pt-2 opacity-0 transition-opacity duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                    <div className="min-w-56 border border-line bg-white py-1 shadow-md">
                       {items.map((sub) => (
                         <Link
                           key={sub.href}
                           href={sub.href}
-                          className="rounded-xl px-3 py-2 text-sm text-ink/80 transition-colors hover:bg-brand-50 hover:text-brand-800"
+                          className="block px-4 py-2 text-sm text-ink/80 transition-colors hover:bg-cream hover:text-brand-800"
                         >
                           {sub.label}
                         </Link>
@@ -124,18 +111,18 @@ export function Header() {
           <div className="flex items-center gap-2">
             <a
               href={business.phone.href}
-              className="hidden items-center gap-2 rounded-full px-3 py-2 text-sm font-semibold text-brand-800 transition-colors hover:bg-brand-50 sm:inline-flex lg:hidden xl:inline-flex"
+              className="hidden items-center gap-2 px-3 py-2 text-sm font-semibold text-brand-800 sm:inline-flex lg:hidden xl:inline-flex"
             >
               <Icon name="Phone" className="size-4" />
               <span className="hidden xl:inline">{business.phone.display}</span>
             </a>
             <Button href="/contact" variant="primary" size="sm" className="hidden sm:inline-flex">
-              Get a free quote
+              Contact us
             </Button>
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}
-              className="grid size-10 place-items-center rounded-xl border border-line text-ink lg:hidden"
+              className="grid size-10 place-items-center border border-line text-ink lg:hidden"
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
             >
@@ -145,7 +132,6 @@ export function Header() {
         </div>
       </div>
 
-      {/* Mobile menu */}
       <div
         className={cn(
           "fixed inset-0 top-0 z-40 lg:hidden",
@@ -159,7 +145,7 @@ export function Header() {
         />
         <div
           className={cn(
-            "absolute right-0 top-0 flex h-dvh w-[88%] max-w-sm flex-col overflow-y-auto bg-white shadow-2xl transition-transform duration-300",
+            "absolute right-0 top-0 flex h-dvh w-[88%] max-w-sm flex-col overflow-y-auto bg-white shadow-xl transition-transform duration-300",
             open ? "translate-x-0" : "translate-x-full"
           )}
         >
@@ -168,21 +154,21 @@ export function Header() {
             <button
               type="button"
               onClick={() => setOpen(false)}
-              className="grid size-10 place-items-center rounded-xl border border-line"
+              className="grid size-10 place-items-center border border-line"
               aria-label="Close menu"
             >
               <Icon name="X" className="size-5" />
             </button>
           </div>
           <nav className="flex-1 px-5 py-4" aria-label="Mobile" onClick={() => setOpen(false)}>
-            <Link href="/" className="block rounded-xl px-3 py-2.5 font-medium text-ink hover:bg-brand-50">
+            <Link href="/" className="block px-3 py-2.5 font-medium text-ink hover:bg-cream">
               Home
             </Link>
             {primaryNav.map((item) => {
               const items = dropdowns[item.href];
               return (
                 <div key={item.href} className="border-t border-line/70 py-1 first:border-t-0">
-                  <Link href={item.href} className="block rounded-xl px-3 py-2.5 font-medium text-ink hover:bg-brand-50">
+                  <Link href={item.href} className="block px-3 py-2.5 font-medium text-ink hover:bg-cream">
                     {item.label}
                   </Link>
                   {items && (
@@ -191,7 +177,7 @@ export function Header() {
                         <Link
                           key={sub.href}
                           href={sub.href}
-                          className="rounded-lg px-3 py-2 text-sm text-muted hover:bg-brand-50 hover:text-brand-800"
+                          className="px-3 py-2 text-sm text-muted hover:bg-cream hover:text-brand-800"
                         >
                           {sub.label}
                         </Link>
@@ -204,7 +190,7 @@ export function Header() {
           </nav>
           <div className="border-t border-line px-5 py-4">
             <Button href="/contact" variant="primary" className="w-full" size="lg">
-              Get a free quote
+              Contact us
             </Button>
             <a
               href={business.phone.href}

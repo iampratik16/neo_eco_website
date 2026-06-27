@@ -11,10 +11,8 @@ export function HeroVideo({ id, className }: { id: string; className?: string })
   const ref = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const isSmall = window.matchMedia("(max-width: 640px)").matches;
-    // Skip on reduced-motion and on small screens (save data, keep LCP light).
-    if (reduce || isSmall) return;
+    // ponytail: muted decorative hero video, always plays — owner wants it visible
+    // even under OS "Reduce Motion". Re-add a reduced-motion guard if a11y review requires.
     const id = requestAnimationFrame(() => setEnabled(true));
     return () => cancelAnimationFrame(id);
   }, []);
@@ -29,9 +27,10 @@ export function HeroVideo({ id, className }: { id: string; className?: string })
       muted
       loop
       playsInline
-      preload="none"
+      preload="auto"
       poster={`/media/images/${id}-poster.jpg`}
       onCanPlay={() => setReady(true)}
+      onLoadedData={() => setReady(true)}
       style={{ opacity: ready ? 1 : 0, transition: "opacity 1s ease" }}
       aria-hidden="true"
       tabIndex={-1}

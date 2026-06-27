@@ -7,7 +7,7 @@
 export const business = {
   name: "Neo Eco Cleaning",
   legalName: "Neo Eco Cleaning",
-  tagline: "Clean Green, Live Clean",
+  tagline: "Block cleaning specialists, North London",
   shortDescription:
     "Specialist block cleaning and communal-area cleaning for managing agents and freeholders across North London, Central London and the surrounding boroughs.",
 
@@ -85,10 +85,10 @@ export const business = {
   ],
 
   stats: [
-    { value: 50, suffix: "+", label: "Years combined experience" },
-    { value: 100, suffix: "+", label: "Blocks cleaned" },
-    { value: 5.0, decimals: 1, label: "Google rating" },
-    { value: 24, suffix: "/7", label: "Availability" },
+    { value: "Since 2018", label: "Serving managing agents across London" },
+    { value: "70%", label: "Of our work is block and communal cleaning" },
+    { value: "50+ yrs", label: "Combined team experience" },
+    { value: "24/7", label: "We work when your building needs us" },
   ],
 } as const;
 

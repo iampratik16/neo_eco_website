@@ -34,8 +34,7 @@ export default function ServicesPage() {
         breadcrumbs={[{ name: "Services", path: "/services" }]}
       >
         <Button href="/contact" variant="accent" size="lg">
-          Get a free quote
-          <Icon name="ArrowRight" className="size-4" />
+          Book a site survey
         </Button>
         <Button href="#services" variant="white" size="lg">
           Browse services

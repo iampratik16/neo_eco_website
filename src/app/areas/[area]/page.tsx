@@ -56,8 +56,7 @@ export default async function AreaDetailPage({ params }: { params: Promise<{ are
       />
 
       <PageHero
-        eyebrow={a.type === "borough" ? "Borough we cover" : "Region we cover"}
-        eyebrowIcon="MapPin"
+        eyebrow={a.type === "borough" ? "Borough" : "Region"}
         title={a.h1}
         intro={a.answer}
         image={a.image}
@@ -65,8 +64,7 @@ export default async function AreaDetailPage({ params }: { params: Promise<{ are
         breadcrumbs={crumbs}
       >
         <Button href="/contact" variant="accent" size="lg">
-          Get a free quote
-          <Icon name="ArrowRight" className="size-4" />
+          Book a site survey
         </Button>
       </PageHero>
 

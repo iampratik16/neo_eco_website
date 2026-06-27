@@ -1,21 +1,12 @@
 import { testimonials as defaultTestimonials, type Testimonial } from "@/data/testimonials";
-import { Icon } from "@/components/ui/Icon";
 
 function Card({ t }: { t: Testimonial }) {
   return (
-    <figure className="flex min-w-[85%] snap-start flex-col rounded-3xl border border-line bg-surface p-7 sm:min-w-0 sm:p-9">
-      <Icon name="Quote" className="size-9 text-brand-200" />
-      <blockquote className="mt-4 flex-1 font-display text-lg leading-relaxed text-ink">{t.quote}</blockquote>
-      <figcaption className="mt-6 flex items-center justify-between border-t border-line pt-5">
-        <div>
-          <div className="font-semibold text-ink">{t.source}</div>
-          <div className="text-sm text-muted">{t.location}</div>
-        </div>
-        <div className="flex" role="img" aria-label="5 out of 5 stars">
-          {[0, 1, 2, 3, 4].map((i) => (
-            <Icon key={i} name="Star" className="size-4 fill-accent-500 text-accent-500" />
-          ))}
-        </div>
+    <figure className="flex flex-col border border-line bg-surface p-6 sm:p-8">
+      <blockquote className="flex-1 font-display text-lg leading-relaxed text-ink">&ldquo;{t.quote}&rdquo;</blockquote>
+      <figcaption className="mt-5 border-t border-line pt-4 text-sm">
+        <div className="font-semibold text-ink">{t.source}</div>
+        <div className="text-muted">{t.location}</div>
       </figcaption>
     </figure>
   );
@@ -23,7 +14,7 @@ function Card({ t }: { t: Testimonial }) {
 
 export function Testimonials({ items = defaultTestimonials }: { items?: Testimonial[] }) {
   return (
-    <div className="no-scrollbar flex snap-x snap-mandatory gap-5 overflow-x-auto pb-2 sm:grid sm:grid-cols-2 sm:overflow-visible">
+    <div className="grid gap-5 sm:grid-cols-2">
       {items.map((t) => (
         <Card key={t.source} t={t} />
       ))}
