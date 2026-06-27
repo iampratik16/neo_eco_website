@@ -31,7 +31,7 @@ export function PageHero({
         <div className="max-w-3xl py-14 sm:py-16 lg:py-20">
           {breadcrumbs && <Breadcrumbs items={breadcrumbs} tone="light" />}
           {eyebrow && (
-            <span className="inline-flex w-fit items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm font-medium backdrop-blur-sm">
+            <span className="glass-dark inline-flex w-fit items-center gap-2 rounded-full px-4 py-1.5 text-sm font-medium text-white">
               <Icon name={eyebrowIcon} className="size-4 text-accent-400" />
               {eyebrow}
             </span>

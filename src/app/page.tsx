@@ -209,7 +209,7 @@ export default function HomePage() {
             </div>
           </Reveal>
           <Reveal delay={120}>
-            <div className="rounded-3xl border border-line bg-surface p-6 shadow-xl shadow-brand-900/5 sm:p-8">
+            <div className="glass rounded-3xl p-6 sm:p-8">
               <QuoteForm />
             </div>
           </Reveal>

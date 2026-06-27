@@ -48,7 +48,7 @@ const IMAGES = [
   // Heroes + OG
   { id: "hero-block-exterior", w: 1920, h: 1080, prompt: "Exterior of a modern North London residential apartment block on a bright morning, contemporary brick and render facade, balconies, neat green landscaping and a clean communal path, blue sky" },
   { id: "hero-lobby", w: 1920, h: 1080, prompt: "Interior of a pristine modern communal residential lobby, polished floor, glass entrance doors, soft daylight, spotless and welcoming, plants in the corner" },
-  { id: "og-default", w: 1200, h: 630, prompt: "A spotless modern communal residential corridor with fresh green plant accents, bright and clean, premium look, lots of negative space on one side" },
+  { id: "og-default", w: 1200, h: 630, prompt: "A spotless modern communal residential corridor with cool blue and aqua tones, bright clean and glassy, soft blue daylight, premium look, lots of negative space on one side" },
 
   // Service images (3:2-ish)
   { id: "service-block-cleaning", w: 1200, h: 800, prompt: "A spotless communal corridor and lobby inside a residential block of flats, freshly cleaned floors, tidy and bright, professional cleaning result" },
@@ -60,7 +60,7 @@ const IMAGES = [
   { id: "service-stone-cleaning", w: 1200, h: 800, prompt: "Restored clean natural stone and masonry facade of a period residential building, soft cleaning result, clean stone detail, daylight" },
 
   // Feature / supporting
-  { id: "eco-green", w: 1200, h: 800, prompt: "Eco friendly cleaning concept, natural green cleaning products and microfibre cloths arranged neatly with fresh green leaves and water droplets, bright minimal, sustainable" },
+  { id: "eco-green", w: 1200, h: 800, prompt: "Eco friendly cleaning concept in a cool blue and aqua palette, neatly arranged turquoise and blue spray bottles, microfibre cloths and fresh water droplets on a clean white surface, soft aqua light, bright minimal, sustainable, fresh and watery" },
   { id: "communal-stairwell", w: 1000, h: 1250, prompt: "A pristine clean communal stairwell in a residential block, spotless steps and handrail, bright natural light from a tall window" },
   { id: "communal-bin-store", w: 1200, h: 800, prompt: "A clean and well organised communal bin store area at a residential block, tidy bins, swept clean floor, bright" },
   { id: "communal-car-park", w: 1200, h: 800, prompt: "A clean residential block underground or covered car park, freshly swept and pressure washed concrete, bright lighting, orderly" },

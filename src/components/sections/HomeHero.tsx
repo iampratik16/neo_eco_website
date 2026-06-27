@@ -26,7 +26,7 @@ export function HomeHero() {
 
       <Container className="relative">
         <div className="flex min-h-[88vh] max-w-2xl flex-col justify-center py-24">
-          <span className="inline-flex w-fit items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm font-medium backdrop-blur-sm">
+          <span className="glass-dark inline-flex w-fit items-center gap-2 rounded-full px-4 py-1.5 text-sm font-medium text-white">
             <Icon name="Leaf" className="size-4 text-accent-400" />
             Block cleaning specialists, North London
           </span>

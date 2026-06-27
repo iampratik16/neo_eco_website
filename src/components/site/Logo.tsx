@@ -14,7 +14,7 @@ export function Logo({ tone = "dark", className }: { tone?: "dark" | "light"; cl
             fill="currentColor"
             className="text-accent-400"
           />
-          <path d="M5 19C9 14 13 11 18 9" stroke="#0e5c39" strokeWidth="1.6" strokeLinecap="round" />
+          <path d="M5 19C9 14 13 11 18 9" stroke="#0a66d6" strokeWidth="1.6" strokeLinecap="round" />
         </svg>
       </span>
       <span className="flex flex-col leading-none">

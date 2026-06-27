@@ -11,6 +11,7 @@ type Status = "idle" | "submitting" | "success" | "error";
 const inputCls =
   "w-full rounded-xl border border-line bg-white px-4 py-3 text-sm text-ink placeholder:text-muted/70 transition-colors focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20";
 const labelCls = "mb-1.5 block text-sm font-medium text-ink";
+const selectCls = cn(inputCls, "appearance-none pr-10 select-chevron");
 
 export function QuoteForm({ defaultService = "", defaultArea = "" }: { defaultService?: string; defaultArea?: string }) {
   const [status, setStatus] = useState<Status>("idle");
@@ -98,7 +99,7 @@ export function QuoteForm({ defaultService = "", defaultArea = "" }: { defaultSe
           <label htmlFor="qf-role" className={labelCls}>
             You are a <span className="font-normal text-muted">(optional)</span>
           </label>
-          <select id="qf-role" name="role" defaultValue="" className={cn(inputCls, "appearance-none")}>
+          <select id="qf-role" name="role" defaultValue="" className={selectCls}>
             <option value="">Select</option>
             <option>Managing agent</option>
             <option>Freeholder</option>
@@ -113,7 +114,7 @@ export function QuoteForm({ defaultService = "", defaultArea = "" }: { defaultSe
           <label htmlFor="qf-service" className={labelCls}>
             Service
           </label>
-          <select id="qf-service" name="service" defaultValue={defaultService} className={cn(inputCls, "appearance-none")}>
+          <select id="qf-service" name="service" defaultValue={defaultService} className={selectCls}>
             <option value="">Any service</option>
             {services.map((s) => (
               <option key={s.slug} value={s.name}>
@@ -126,7 +127,7 @@ export function QuoteForm({ defaultService = "", defaultArea = "" }: { defaultSe
           <label htmlFor="qf-area" className={labelCls}>
             Area
           </label>
-          <select id="qf-area" name="area" defaultValue={defaultArea} className={cn(inputCls, "appearance-none")}>
+          <select id="qf-area" name="area" defaultValue={defaultArea} className={selectCls}>
             <option value="">Select area</option>
             {areas.map((a) => (
               <option key={a.slug} value={a.name}>

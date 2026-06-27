@@ -1,36 +1,38 @@
 @import "tailwindcss";
 
 /* ============================================================
-   Neo Eco Cleaning — design tokens
-   Eco-led, premium, clean. Deep green dominant, fresh lime accent,
-   green-tinted neutrals, generous whitespace.
+   Neo Eco Cleaning — design tokens ("Crisp Azure Glass")
+   Blue + aqua + light-blue + white. Deep azure trust, luminous
+   aqua-teal spark, sky-tinted whites, crisp frosted glass.
+   All contrast pairs verified WCAG AA. Accent (aqua) is for fills,
+   icons, hairlines and large-on-dark text only — never small text on white.
    ============================================================ */
 @theme {
-  /* Brand green scale */
-  --color-brand-50: #ecfdf3;
-  --color-brand-100: #d1fadf;
-  --color-brand-200: #a6f4c5;
-  --color-brand-300: #6ce9a6;
-  --color-brand-400: #32d583;
-  --color-brand-500: #12b76a;
-  --color-brand-600: #0a9355;
-  --color-brand-700: #0c7544;
-  --color-brand-800: #0e5c39;
-  --color-brand-900: #0c4a30;
-  --color-brand-950: #042c1d;
+  /* Brand azure scale */
+  --color-brand-50: #eef6ff;
+  --color-brand-100: #d9ecff;
+  --color-brand-200: #b9dcff;
+  --color-brand-300: #86c3ff;
+  --color-brand-400: #4ea0fb;
+  --color-brand-500: #1f83f0;
+  --color-brand-600: #0a66d6;
+  --color-brand-700: #0b53ad;
+  --color-brand-800: #0d448c;
+  --color-brand-900: #0f3a72;
+  --color-brand-950: #0a2347;
 
-  /* Fresh accent (lime) — used sparingly for highlights/CTAs */
-  --color-accent-300: #d4f57e;
-  --color-accent-400: #bdee4f;
-  --color-accent-500: #a3e635;
-  --color-accent-600: #84cc16;
+  /* Aqua-teal accent — spark only (fills, icons, rules, large-on-dark) */
+  --color-accent-300: #7fe8e0;
+  --color-accent-400: #39d6cc;
+  --color-accent-500: #15c2b8;
+  --color-accent-600: #0a9c95;
 
-  /* Neutrals (green-tinted) */
-  --color-ink: #0b1f17;
-  --color-body: #41524a;
-  --color-muted: #586a60; /* WCAG AA: ~5.8:1 on white, ~5.4:1 on cream */
-  --color-line: #e3eae4;
-  --color-cream: #f5f8f3;
+  /* Cool blue-tinted neutrals */
+  --color-ink: #0a1830; /* near-black navy: 17.7:1 on white */
+  --color-body: #3c4a63; /* 8.9:1 on white, 8.4:1 on cream */
+  --color-muted: #5a6885; /* 5.59:1 on white, 5.24:1 on cream */
+  --color-line: #dde6f2; /* light blue-grey hairline */
+  --color-cream: #f3f8fe; /* sky-tinted off-white */
   --color-surface: #ffffff;
 
   /* Semantic */
@@ -120,11 +122,62 @@
   .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
   .no-scrollbar::-webkit-scrollbar { display: none; }
 
+  /* Chevron affordance for native selects (distinguishes them from text inputs) */
+  .select-chevron {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='%235a6885' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.85rem center;
+    background-size: 18px 18px;
+  }
+
+  /* Azure + aqua aurora over sky-tinted cream. Blob opacity <=26% so ink/body/brand
+     text on top stays AA. Same class name = no component markup changes. */
   .bg-eco-gradient {
     background:
-      radial-gradient(60% 90% at 85% 0%, color-mix(in oklab, var(--color-brand-500) 16%, transparent), transparent 60%),
-      radial-gradient(50% 80% at 0% 100%, color-mix(in oklab, var(--color-accent-500) 14%, transparent), transparent 55%),
+      radial-gradient(58% 88% at 82% -8%, color-mix(in oklab, var(--color-brand-400) 22%, transparent), transparent 60%),
+      radial-gradient(46% 78% at 6% 4%, color-mix(in oklab, var(--color-accent-400) 18%, transparent), transparent 58%),
+      radial-gradient(40% 70% at 50% 112%, color-mix(in oklab, var(--color-brand-200) 26%, transparent), transparent 62%),
       var(--color-cream);
+  }
+  /* Richer watery mesh for hero/quote sections. */
+  .bg-aurora {
+    background:
+      radial-gradient(38% 48% at 78% 4%, color-mix(in oklab, var(--color-accent-400) 18%, transparent), transparent 62%),
+      radial-gradient(40% 52% at 12% 18%, color-mix(in oklab, var(--color-brand-500) 16%, transparent), transparent 60%),
+      radial-gradient(46% 60% at 60% 100%, color-mix(in oklab, var(--color-brand-300) 16%, transparent), transparent 64%),
+      linear-gradient(180deg, var(--color-cream), color-mix(in oklab, var(--color-brand-50) 70%, var(--color-cream)));
+  }
+
+  /* ---- Glassmorphism (two tiers) ----
+     LIGHT glass over light page/aurora (dark text); DARK glass over imagery (white text).
+     Opaque fallback first; backdrop-filter only where supported. Meniscus highlight as an
+     inset box-shadow so it never darkens text. Blue-tinted ambient shadows. */
+  .glass {
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid color-mix(in srgb, #ffffff 55%, transparent);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.6),
+      0 8px 24px -8px rgba(10, 24, 48, 0.18),
+      0 2px 6px -2px rgba(10, 24, 48, 0.1);
+  }
+  .glass-dark {
+    background: rgba(10, 24, 48, 0.9);
+    border: 1px solid color-mix(in srgb, #ffffff 16%, transparent);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.12),
+      0 12px 32px -10px rgba(10, 35, 71, 0.45);
+  }
+  @supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .glass {
+      background: color-mix(in srgb, #ffffff 82%, transparent);
+      -webkit-backdrop-filter: blur(14px) saturate(1.4);
+      backdrop-filter: blur(14px) saturate(1.4);
+    }
+    .glass-dark {
+      background: color-mix(in srgb, var(--color-ink) 62%, transparent);
+      -webkit-backdrop-filter: blur(14px) saturate(1.4);
+      backdrop-filter: blur(14px) saturate(1.4);
+    }
   }
 }
 

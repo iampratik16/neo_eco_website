@@ -66,7 +66,7 @@ export function Header() {
         className={cn(
           "border-b transition-all duration-300",
           scrolled
-            ? "border-line bg-white/90 backdrop-blur-md supports-[backdrop-filter]:bg-white/80"
+            ? "border-line bg-white/92 backdrop-blur-md backdrop-saturate-150 supports-[backdrop-filter]:bg-white/80"
             : "border-transparent bg-white"
         )}
       >
@@ -104,7 +104,7 @@ export function Header() {
                     <Icon name="ChevronDown" className="size-4 transition-transform group-hover:rotate-180" />
                   </Link>
                   <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                    <div className="grid w-64 gap-0.5 rounded-2xl border border-line bg-white p-2 shadow-xl shadow-ink/5">
+                    <div className="glass grid w-64 gap-0.5 rounded-2xl p-2">
                       {items.map((sub) => (
                         <Link
                           key={sub.href}

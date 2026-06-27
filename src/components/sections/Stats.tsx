@@ -1,12 +1,12 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 
-type Stat = { value: number; suffix?: string; decimals?: number; label: string };
+type Stat = { value: number; suffix?: string; decimals?: number; label: string; noCount?: boolean };
 
-function useCountUp(target: number, decimals = 0, start: boolean) {
-  const [val, setVal] = useState(0);
+function useCountUp(target: number, decimals = 0, start: boolean, noCount = false) {
+  const [val, setVal] = useState(noCount ? target : 0);
   useEffect(() => {
-    if (!start) return;
+    if (noCount || !start) return;
     const reduce =
       typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const duration = reduce ? 0 : 1400;
@@ -22,15 +22,15 @@ function useCountUp(target: number, decimals = 0, start: boolean) {
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [target, start]);
+  }, [target, start, noCount]);
   return decimals ? val.toFixed(decimals) : Math.round(val).toString();
 }
 
 function StatItem({ stat, start }: { stat: Stat; start: boolean }) {
-  const display = useCountUp(stat.value, stat.decimals ?? 0, start);
+  const display = useCountUp(stat.value, stat.decimals ?? 0, start, stat.noCount);
   return (
     <div className="text-center">
-      <div className="font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+      <div className="font-display text-4xl font-semibold tracking-tight text-accent-300 sm:text-5xl">
         {display}
         {stat.suffix && <span className="text-accent-400">{stat.suffix}</span>}
       </div>

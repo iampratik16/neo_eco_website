@@ -87,8 +87,9 @@ export const business = {
   stats: [
     { value: 50, suffix: "+", label: "Years combined experience" },
     { value: 100, suffix: "+", label: "Blocks cleaned" },
-    { value: 5.0, decimals: 1, label: "Google rating" },
-    { value: 24, suffix: "/7", label: "Availability" },
+    // Rating + availability are fixed facts, not quantities — render static (no count-up).
+    { value: 5.0, decimals: 1, label: "Google rating", noCount: true },
+    { value: 24, suffix: "/7", label: "Availability", noCount: true },
   ],
 } as const;
 
