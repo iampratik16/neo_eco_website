@@ -78,13 +78,13 @@ export function QuoteForm({ defaultService = "", defaultArea = "" }: { defaultSe
           <label htmlFor="qf-name" className={labelCls}>
             Your name
           </label>
-          <input id="qf-name" name="name" autoComplete="name" required className={inputCls} placeholder="Jane Smith" />
+          <input id="qf-name" name="name" autoComplete="name" required className={inputCls} placeholder="Sarah Chen" />
         </div>
         <div>
           <label htmlFor="qf-email" className={labelCls}>
             Email
           </label>
-          <input id="qf-email" name="email" type="email" autoComplete="email" required className={inputCls} placeholder="jane@example.com" />
+          <input id="qf-email" name="email" type="email" autoComplete="email" required className={inputCls} placeholder="sarah@rendallandrittner.co.uk" />
         </div>
       </div>
 
