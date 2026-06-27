@@ -18,13 +18,13 @@ export function HomeHero() {
         sizes="100vw"
         className="object-cover"
       />
-      {/* Motion enhancement */}
-      <HeroVideo id="hero-lobby" className="absolute inset-0 -z-[1] size-full object-cover" />
+      {/* Motion enhancement: video sits above the poster, below the scrims */}
+      <HeroVideo id="hero-lobby" className="absolute inset-0 z-[1] size-full object-cover" />
       {/* Scrims for legibility */}
-      <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/70 to-ink/30" />
-      <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-ink/20" />
+      <div className="absolute inset-0 z-[2] bg-gradient-to-r from-ink/90 via-ink/70 to-ink/30" />
+      <div className="absolute inset-0 z-[2] bg-gradient-to-t from-ink/80 via-transparent to-ink/20" />
 
-      <Container className="relative">
+      <Container className="relative z-10">
         <div className="flex min-h-[88vh] max-w-2xl flex-col justify-center py-24">
           <span className="glass-dark inline-flex w-fit items-center gap-2 rounded-full px-4 py-1.5 text-sm font-medium text-white">
             <Icon name="Leaf" className="size-4 text-accent-400" />

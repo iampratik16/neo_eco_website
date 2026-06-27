@@ -3,7 +3,8 @@ import { useEffect, useRef, useState } from "react";
 
 /**
  * Enhancement layer: fades a muted looping video in over the poster image once it can play.
- * Never added when the user prefers reduced motion, so the poster (the LCP image) remains.
+ * Never added when the user prefers reduced motion or on small screens, so the poster
+ * (the LCP image) remains there.
  */
 export function HeroVideo({ id, className }: { id: string; className?: string }) {
   const [enabled, setEnabled] = useState(false);
@@ -15,11 +16,25 @@ export function HeroVideo({ id, className }: { id: string; className?: string })
     const isSmall = window.matchMedia("(max-width: 640px)").matches;
     // Skip on reduced-motion and on small screens (save data, keep LCP light).
     if (reduce || isSmall) return;
-    const id = requestAnimationFrame(() => setEnabled(true));
-    return () => cancelAnimationFrame(id);
+    const raf = requestAnimationFrame(() => setEnabled(true));
+    return () => cancelAnimationFrame(raf);
   }, []);
 
+  // Force muted (React doesn't always reflect the muted prop, which blocks autoplay) and start playback.
+  useEffect(() => {
+    const v = ref.current;
+    if (!enabled || !v) return;
+    v.muted = true;
+    const play = () => {
+      v.play().catch(() => {});
+    };
+    if (v.readyState >= 2) play();
+    else v.addEventListener("loadeddata", play, { once: true });
+  }, [enabled]);
+
   if (!enabled) return null;
+
+  const markReady = () => setReady(true);
 
   return (
     <video
@@ -29,9 +44,11 @@ export function HeroVideo({ id, className }: { id: string; className?: string })
       muted
       loop
       playsInline
-      preload="none"
+      preload="auto"
       poster={`/media/images/${id}-poster.jpg`}
-      onCanPlay={() => setReady(true)}
+      onCanPlay={markReady}
+      onPlaying={markReady}
+      onLoadedData={markReady}
       style={{ opacity: ready ? 1 : 0, transition: "opacity 1s ease" }}
       aria-hidden="true"
       tabIndex={-1}
