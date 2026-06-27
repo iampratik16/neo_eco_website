@@ -45,3 +45,6 @@ next-env.d.ts
 
 # keep the example (no secrets)
 !.env.example
+
+# raw hero source (processed into public/media/video/hero-lobby.*)
+hero99.mp4
