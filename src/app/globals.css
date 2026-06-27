@@ -1,0 +1,183 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Neo Eco Cleaning — design tokens
+   Eco-led, premium, clean. Deep green dominant, fresh lime accent,
+   green-tinted neutrals, generous whitespace.
+   ============================================================ */
+@theme {
+  /* Brand green scale */
+  --color-brand-50: #ecfdf3;
+  --color-brand-100: #d1fadf;
+  --color-brand-200: #a6f4c5;
+  --color-brand-300: #6ce9a6;
+  --color-brand-400: #32d583;
+  --color-brand-500: #12b76a;
+  --color-brand-600: #0a9355;
+  --color-brand-700: #0c7544;
+  --color-brand-800: #0e5c39;
+  --color-brand-900: #0c4a30;
+  --color-brand-950: #042c1d;
+
+  /* Fresh accent (lime) — used sparingly for highlights/CTAs */
+  --color-accent-300: #d4f57e;
+  --color-accent-400: #bdee4f;
+  --color-accent-500: #a3e635;
+  --color-accent-600: #84cc16;
+
+  /* Neutrals (green-tinted) */
+  --color-ink: #0b1f17;
+  --color-body: #41524a;
+  --color-muted: #586a60; /* WCAG AA: ~5.8:1 on white, ~5.4:1 on cream */
+  --color-line: #e3eae4;
+  --color-cream: #f5f8f3;
+  --color-surface: #ffffff;
+
+  /* Semantic */
+  --color-background: #ffffff;
+  --color-foreground: var(--color-ink);
+
+  /* Fonts (CSS vars set by next/font in layout.tsx) */
+  --font-display: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* Radii */
+  --radius-xs: 0.375rem;
+  --radius-sm: 0.625rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.75rem;
+  --radius-2xl: 2.25rem;
+
+  /* Easing + animations */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-marquee: marquee 38s linear infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+  body {
+    background: var(--color-background);
+    color: var(--color-body);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    color: var(--color-ink);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  p { text-wrap: pretty; }
+  ::selection {
+    background: var(--color-brand-800);
+    color: #fff;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-brand-600);
+    outline-offset: 2px;
+    border-radius: 3px;
+  }
+  a { color: inherit; text-decoration: none; }
+}
+
+/* ============================================================
+   Utilities
+   ============================================================ */
+@layer utilities {
+  /* Reveal is gated behind .js (added by an inline script before paint) so content
+     stays fully visible when JavaScript is disabled. No flash on load. */
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s var(--ease-out-expo), transform 0.7s var(--ease-out-expo);
+    will-change: opacity, transform;
+  }
+  .js .reveal.is-in {
+    opacity: 1;
+    transform: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .js .reveal { opacity: 1; transform: none; transition: none; }
+  }
+  .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+
+  .bg-eco-gradient {
+    background:
+      radial-gradient(60% 90% at 85% 0%, color-mix(in oklab, var(--color-brand-500) 16%, transparent), transparent 60%),
+      radial-gradient(50% 80% at 0% 100%, color-mix(in oklab, var(--color-accent-500) 14%, transparent), transparent 55%),
+      var(--color-cream);
+  }
+}
+
+/* ============================================================
+   Article body (rendered markdown for blog/case studies)
+   ============================================================ */
+.article-body {
+  color: var(--color-body);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+.article-body > * + * { margin-top: 1.25rem; }
+.article-body h2 {
+  margin-top: 2.5rem;
+  margin-bottom: 0.25rem;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+}
+.article-body h3 {
+  margin-top: 2rem;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+.article-body strong { color: var(--color-ink); font-weight: 600; }
+.article-body a { color: var(--color-brand-700); text-decoration: underline; text-underline-offset: 2px; }
+.article-body a:hover { color: var(--color-brand-800); }
+.article-body ul { list-style: none; padding: 0; }
+.article-body ul li {
+  position: relative;
+  padding-left: 1.75rem;
+  margin-top: 0.6rem;
+}
+.article-body ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 9999px;
+  background: color-mix(in oklab, var(--color-brand-500) 22%, transparent);
+  box-shadow: inset 0 0 0 3px var(--color-brand-600);
+}
+.article-body ol { padding-left: 1.25rem; }
+.article-body ol li { margin-top: 0.5rem; }
+.article-body em { font-style: italic; color: var(--color-muted); }
+.article-body p:has(em:only-child) {
+  border-top: 1px solid var(--color-line);
+  padding-top: 1.25rem;
+  font-size: 0.95rem;
+}
